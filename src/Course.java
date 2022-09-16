@@ -1,38 +1,36 @@
+// imports
 import java.util.ArrayList;
 
-/*
-[x] class Course
-	course name
-	course id
-	max students
-	current students
-	list of names
-	course intructor
-	course section number
-	course location
-*/
-
-public class Course implements Comparable<Course>{
-	String courseName; // in constructor
-	String courseID; // in constructor
-	int maxStudents; // in constructor
-	int currentStudents;
-	ArrayList<String> names = new ArrayList<String>();
-	String courseInstructor; // in constructor
-	int sectionNum; // in constructor
-	String location; // in constructor
+// Course class
+// must implement Comparable<Course> and Serializable
+public class Course implements Comparable<Course>, java.io.Serializable{
 	
+	// create properties
+	private static final long serialVersionUID = 1L;
+	private String courseName; // in constructor
+	private String courseID; // in constructor
+	private int maxStudents; // in constructor
+	private int currentStudents;
+	private ArrayList<String> names = new ArrayList<String>();
+	private String courseInstructor; // in constructor
+	private int sectionNum; // in constructor
+	private String location; // in constructor
+	
+	// default constructor
 	Course(){}
-	Course(String a, String b, int c, String d, int e, String f) {
-
+	
+	// overloaded constructor
+	Course(String a, String b, int c, int d, String e, int f, String g) {
 		courseName = a;
 		courseID = b;
 		maxStudents = c;
-		courseInstructor = d;
-		sectionNum = e;
-		location = f;
+		currentStudents = d;
+		courseInstructor = e;
+		sectionNum = f;
+		location = g;
 	}
 	
+	// Override the compareTo method to allow sorting of courses in Admin method
 	@Override
 	public int compareTo(Course a){
 		return this.getCurrentStudents() - a.getCurrentStudents();
@@ -53,7 +51,7 @@ public class Course implements Comparable<Course>{
 	void setCourseID (String a) {courseID = a;}
 	void setMaxStudents (int a) {maxStudents = a;}
 	void setCurrentStudents (int a) {currentStudents = a;}
-	void setNames (ArrayList<String> a) {names = a;}
+	void setNames (String a) {names.add(a);}
 	void setCourseInstructor (String a) {courseInstructor = a;}
 	void setSectionNum (int a) {sectionNum = a;}
 	void setLocation (String a) {location = a;}
